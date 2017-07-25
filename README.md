@@ -88,6 +88,9 @@ $ dmesg | grep clevo
 If it returns no line such as 'clevo_xsm_wmi: Model Clevo P15SM found', then your model isn't supported.
 Please open an issue and supply the output of 'uname -a', 'sudo dmidecode' and 'dmesg | grep clevo'.
 
+### Pull Requests
+Please create a pull request into the testing branch. After rewiev and testing we commting in the master branch.
+
 ### License
 This program is free software;  you can redistribute it and/or modify
 it under the terms of the  GNU General Public License as published by

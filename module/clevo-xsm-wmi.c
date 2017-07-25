@@ -1520,6 +1520,14 @@ static struct dmi_system_id clevo_xsm_dmi_table[] __initdata = {
 		.driver_data = &kb_full_color_ops,
 	},
 	{
+		.ident = "P65xHP",
+		.matches = {
+			DMI_MATCH(DMI_PRODUCT_NAME, "P65xHP"),
+		},
+		.callback = clevo_xsm_dmi_matched,
+		.driver_data = &kb_full_color_ops,
+	},
+	{
 		/* terminating NULL entry */
 	},
 };

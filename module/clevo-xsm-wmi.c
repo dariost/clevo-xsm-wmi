@@ -1437,41 +1437,7 @@ static struct dmi_system_id clevo_xsm_dmi_table[] __initdata = {
 		.callback = clevo_xsm_dmi_matched,
 		.driver_data = &kb_8_color_ops,
 	},
-	/* Ones that don't follow the 'standard' product names above */
-	{
-		.ident = "Clevo P7xxDM(-G)",
-		.matches = {
-			DMI_MATCH(DMI_PRODUCT_NAME, "Deimos/Phobos 1x15S"),
-		},
-		.callback = clevo_xsm_dmi_matched,
-		.driver_data = &kb_full_color_with_extra_ops,
-	},
-	{
-		.ident = "Clevo P750ZM",
-		.matches = {
-			DMI_MATCH(DMI_PRODUCT_NAME, "P5 Pro SE"),
-		},
-		.callback = clevo_xsm_dmi_matched,
-		.driver_data = &kb_full_color_with_extra_ops,
-	},
-	{
-		.ident = "Clevo P750ZM",
-		.matches = {
-			DMI_MATCH(DMI_PRODUCT_NAME, "P5 Pro"),
-		},
-		.callback = clevo_xsm_dmi_matched,
-		.driver_data = &kb_full_color_with_extra_ops,
-	},
-	{
-		.ident = "Clevo P750ZM",
-		.matches = {
-			DMI_MATCH(DMI_SYS_VENDOR, "ECT"),
-			DMI_MATCH(DMI_BOARD_NAME, "P750ZM"),
-		},
-		.callback = clevo_xsm_dmi_matched,
-		.driver_data = &kb_full_color_with_extra_ops,
-	},
-	{
+		{
 		.ident = "Clevo P65_67RSRP",
 		.matches = {
 			DMI_MATCH(DMI_PRODUCT_NAME, "P65_67RSRP"),
@@ -1512,7 +1478,7 @@ static struct dmi_system_id clevo_xsm_dmi_table[] __initdata = {
 		.driver_data = &kb_full_color_ops,
 	},
 	{
-		.ident = "N850HJ",
+		.ident = "Clevo N850HJ",
 		.matches = {
 			DMI_MATCH(DMI_PRODUCT_NAME, "N85_N87"),
 		},
@@ -1520,12 +1486,46 @@ static struct dmi_system_id clevo_xsm_dmi_table[] __initdata = {
 		.driver_data = &kb_full_color_ops,
 	},
 	{
-		.ident = "P65xHP",
+		.ident = "Clevo P65xHP",
 		.matches = {
 			DMI_MATCH(DMI_PRODUCT_NAME, "P65xHP"),
 		},
 		.callback = clevo_xsm_dmi_matched,
 		.driver_data = &kb_full_color_ops,
+	},
+	/* Ones that don't follow the 'standard' product names above */
+	{
+		.ident = "Clevo P7xxDM(-G)",
+		.matches = {
+			DMI_MATCH(DMI_PRODUCT_NAME, "Deimos/Phobos 1x15S"),
+		},
+		.callback = clevo_xsm_dmi_matched,
+		.driver_data = &kb_full_color_with_extra_ops,
+	},
+	{
+		.ident = "Clevo P750ZM",
+		.matches = {
+			DMI_MATCH(DMI_PRODUCT_NAME, "P5 Pro SE"),
+		},
+		.callback = clevo_xsm_dmi_matched,
+		.driver_data = &kb_full_color_with_extra_ops,
+	},
+	{
+		.ident = "Clevo P750ZM",
+		.matches = {
+			DMI_MATCH(DMI_PRODUCT_NAME, "P5 Pro"),
+		},
+		.callback = clevo_xsm_dmi_matched,
+		.driver_data = &kb_full_color_with_extra_ops,
+	},
+	{
+		.ident = "Clevo P750ZM",
+		.matches = {
+			DMI_MATCH(DMI_SYS_VENDOR, "ECT"),
+			DMI_MATCH(DMI_BOARD_NAME, "P750ZM"),
+		},
+		.callback = clevo_xsm_dmi_matched,
+		.driver_data = &kb_full_color_with_extra_ops,
 	},
 	{
 		/* terminating NULL entry */

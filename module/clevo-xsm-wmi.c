@@ -1622,7 +1622,7 @@ static void __exit clevo_xsm_exit(void)
 module_init(clevo_xsm_init);
 module_exit(clevo_xsm_exit);
 
-MODULE_AUTHOR("Arnoud Willemsen <mail@lynthium.com>");
+MODULE_AUTHOR("TUXEDO Computer GmbH <tux@tuxedocomputers.com>");
 MODULE_DESCRIPTION("Clevo SM series laptop driver.");
 MODULE_LICENSE("GPL");
-MODULE_VERSION("0.1.0");
+MODULE_VERSION("0.1.1");

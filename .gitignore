@@ -50,3 +50,9 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Binaries
+utility/clevo-xsm-wmi
+
+# Generated files
+utility/Makefile

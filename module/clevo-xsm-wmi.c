@@ -158,7 +158,7 @@ static bool param_kb_off;
 module_param_named(kb_off, param_kb_off, bool, S_IRUSR);
 MODULE_PARM_DESC(kb_off, "Switch keyboard backlight off");
 
-static bool param_kb_cycle_colors;
+static bool param_kb_cycle_colors = true;
 module_param_named(kb_cycle_colors, param_kb_cycle_colors, bool, S_IRUSR);
 MODULE_PARM_DESC(kb_cycle_colors, "Cycle colors rather than modes");
 

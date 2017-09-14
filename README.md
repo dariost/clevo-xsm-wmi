@@ -38,6 +38,7 @@ http://www.linux-onlineshop.de/forum/index.php?page=Thread&threadID=26
 | P775DM3(-G)          | Clevo P775DM3(-G)      | TUXEDO XUX707          |
 | N85_N87              | Clevo N850HJ           | TUXEDO DX1707          |
 | P870DM               | Clevo P870DM           | ???                    |
+| N85_N87,HJ,HJ1,HK1   | Clevo N870HK           | ???                    |
 | P95_HP,HR,HQ         | Clevo P950HP6          | ???                    |
 
 ### Building

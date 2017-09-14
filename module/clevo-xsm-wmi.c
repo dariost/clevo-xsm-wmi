@@ -158,7 +158,7 @@ static bool param_kb_off;
 module_param_named(kb_off, param_kb_off, bool, S_IRUSR);
 MODULE_PARM_DESC(kb_off, "Switch keyboard backlight off");
 
-static bool param_kb_cycle_colors;
+static bool param_kb_cycle_colors = true;
 module_param_named(kb_cycle_colors, param_kb_cycle_colors, bool, S_IRUSR);
 MODULE_PARM_DESC(kb_cycle_colors, "Cycle colors rather than modes");
 
@@ -503,8 +503,7 @@ static struct {
 
 static void kb_dec_brightness(void)
 {
-	if (kb_backlight.state == KB_STATE_OFF ||
-		kb_backlight.mode != KB_MODE_CUSTOM)
+	if (kb_backlight.state == KB_STATE_OFF)
 		return;
 	if (kb_backlight.brightness == 0)
 		return;
@@ -516,8 +515,7 @@ static void kb_dec_brightness(void)
 
 static void kb_inc_brightness(void)
 {
-	if (kb_backlight.state == KB_STATE_OFF ||
-		kb_backlight.mode != KB_MODE_CUSTOM)
+	if (kb_backlight.state == KB_STATE_OFF)
 		return;
 
 	CLEVO_XSM_DEBUG();
@@ -1437,33 +1435,7 @@ static struct dmi_system_id clevo_xsm_dmi_table[] __initdata = {
 		.callback = clevo_xsm_dmi_matched,
 		.driver_data = &kb_8_color_ops,
 	},
-	/* Ones that don't follow the 'standard' product names above */
-	{
-		.ident = "Clevo P7xxDM(-G)",
-		.matches = {
-			DMI_MATCH(DMI_PRODUCT_NAME, "Deimos/Phobos 1x15S"),
-		},
-		.callback = clevo_xsm_dmi_matched,
-		.driver_data = &kb_full_color_with_extra_ops,
-	},
-	{
-		.ident = "Clevo P750ZM",
-		.matches = {
-			DMI_MATCH(DMI_PRODUCT_NAME, "P5 Pro SE"),
-		},
-		.callback = clevo_xsm_dmi_matched,
-		.driver_data = &kb_full_color_with_extra_ops,
-	},
-	{
-		.ident = "Clevo P750ZM",
-		.matches = {
-			DMI_MATCH(DMI_SYS_VENDOR, "ECT"),
-			DMI_MATCH(DMI_BOARD_NAME, "P750ZM"),
-		},
-		.callback = clevo_xsm_dmi_matched,
-		.driver_data = &kb_full_color_with_extra_ops,
-	},
-	{
+		{
 		.ident = "Clevo P65_67RSRP",
 		.matches = {
 			DMI_MATCH(DMI_PRODUCT_NAME, "P65_67RSRP"),
@@ -1486,6 +1458,88 @@ static struct dmi_system_id clevo_xsm_dmi_table[] __initdata = {
 		},
 		.callback = clevo_xsm_dmi_matched,
 		.driver_data = &kb_8_color_ops,
+	},
+	{
+		.ident = "Clevo P7xxDM2(-G)",
+		.matches = {
+			DMI_MATCH(DMI_PRODUCT_NAME, "P7xxDM2(-G)"),
+		},
+		.callback = clevo_xsm_dmi_matched,
+		.driver_data = &kb_full_color_with_extra_ops,
+	},
+	{
+		.ident = "Clevo P950HP6",
+		.matches = {
+			DMI_MATCH(DMI_PRODUCT_NAME, "P95_HP,HR,HQ"),
+		},
+		.callback = clevo_xsm_dmi_matched,
+		.driver_data = &kb_full_color_ops,
+	},
+	{
+		.ident = "Clevo N850HJ",
+		.matches = {
+			DMI_MATCH(DMI_PRODUCT_NAME, "N85_N87"),
+		},
+		.callback = clevo_xsm_dmi_matched,
+		.driver_data = &kb_full_color_ops,
+	},
+	{
+		.ident = "Clevo P775DM3(-G)",
+		.matches = {
+			DMI_MATCH(DMI_PRODUCT_NAME, "P775DM3(-G)"),
+		},
+		.callback = clevo_xsm_dmi_matched,
+		.driver_data = &kb_full_color_ops,
+	},
+	{
+		.ident = "Clevo N850HJ",
+		.matches = {
+			DMI_MATCH(DMI_PRODUCT_NAME, "N85_N87"),
+		},
+		.callback = clevo_xsm_dmi_matched,
+		.driver_data = &kb_full_color_ops,
+	},
+	{
+		.ident = "Clevo N870HK",
+		.matches = {
+			DMI_MATCH(DMI_PRODUCT_NAME, "N85_N87,HJ,HJ1,HK1"),
+		},
+		.callback = clevo_xsm_dmi_matched,
+		.driver_data = &kb_full_color_with_extra_ops,
+	},
+	/* Ones that don't follow the 'standard' product names above */
+	{
+		.ident = "Clevo P7xxDM(-G)",
+		.matches = {
+			DMI_MATCH(DMI_PRODUCT_NAME, "Deimos/Phobos 1x15S"),
+		},
+		.callback = clevo_xsm_dmi_matched,
+		.driver_data = &kb_full_color_with_extra_ops,
+	},
+	{
+		.ident = "Clevo P750ZM",
+		.matches = {
+			DMI_MATCH(DMI_PRODUCT_NAME, "P5 Pro SE"),
+		},
+		.callback = clevo_xsm_dmi_matched,
+		.driver_data = &kb_full_color_with_extra_ops,
+	},
+	{
+		.ident = "Clevo P750ZM",
+		.matches = {
+			DMI_MATCH(DMI_PRODUCT_NAME, "P5 Pro"),
+		},
+		.callback = clevo_xsm_dmi_matched,
+		.driver_data = &kb_full_color_with_extra_ops,
+	},
+	{
+		.ident = "Clevo P750ZM",
+		.matches = {
+			DMI_MATCH(DMI_SYS_VENDOR, "ECT"),
+			DMI_MATCH(DMI_BOARD_NAME, "P750ZM"),
+		},
+		.callback = clevo_xsm_dmi_matched,
+		.driver_data = &kb_full_color_with_extra_ops,
 	},
 	{
 		/* terminating NULL entry */
@@ -1582,7 +1636,7 @@ static void __exit clevo_xsm_exit(void)
 module_init(clevo_xsm_init);
 module_exit(clevo_xsm_exit);
 
-MODULE_AUTHOR("Arnoud Willemsen <mail@lynthium.com>");
+MODULE_AUTHOR("TUXEDO Computer GmbH <tux@tuxedocomputers.com>");
 MODULE_DESCRIPTION("Clevo SM series laptop driver.");
 MODULE_LICENSE("GPL");
-MODULE_VERSION("0.1.0");
+MODULE_VERSION("0.1.1");

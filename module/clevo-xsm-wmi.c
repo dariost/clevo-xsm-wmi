@@ -503,8 +503,7 @@ static struct {
 
 static void kb_dec_brightness(void)
 {
-	if (kb_backlight.state == KB_STATE_OFF ||
-		kb_backlight.mode != KB_MODE_CUSTOM)
+	if (kb_backlight.state == KB_STATE_OFF)
 		return;
 	if (kb_backlight.brightness == 0)
 		return;
@@ -516,8 +515,7 @@ static void kb_dec_brightness(void)
 
 static void kb_inc_brightness(void)
 {
-	if (kb_backlight.state == KB_STATE_OFF ||
-		kb_backlight.mode != KB_MODE_CUSTOM)
+	if (kb_backlight.state == KB_STATE_OFF)
 		return;
 
 	CLEVO_XSM_DEBUG();
